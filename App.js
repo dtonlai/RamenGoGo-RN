@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { Appbar } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import MainView from "./screens/MainView";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider style={styles.statusBar}>
+      <Appbar.Header>
+        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Content title="RamenGoGo" />
+      </Appbar.Header>
+      <MainView />
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  statusBar: {
+    paddingTop: StatusBar.height,
+    borderStyle: "10px 10px 10px",
   },
 });
