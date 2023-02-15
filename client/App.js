@@ -8,7 +8,6 @@ export default function App() {
   return (
     <SafeAreaProvider style={styles.statusBar}>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => {}} />
         <Appbar.Content title="RamenGoGo" />
       </Appbar.Header>
       <MainView />
@@ -25,6 +24,5 @@ const styles = StyleSheet.create({
   },
   statusBar: {
     paddingTop: StatusBar.height,
-    borderStyle: "10px 10px 10px",
   },
 });
