@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StatusBar, StyleSheet, View, Dimensions, Image } from "react-native";
-import { Card, Chip, FAB, Text, Banner } from "react-native-paper";
+import { Text, Snackbar } from "react-native-paper";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 
 import ramen from "../assets/ramen.png";
 
 function MainView() {
-  const [bannerVisible, setBannerVisible] = useState(true);
+  const [cardVisible, setCardVisible] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -37,49 +37,52 @@ function MainView() {
 
       {/*  Start Card Component */}
 
-      <View style={styles.card}>
-        <View style={styles.cardImage}>
+      <Snackbar
+        style={styles.cardSurface}
+        visible={cardVisible}
+        onDismiss={() => console.log("Dismiss")}
+      >
+        <View style={styles.cardContainer}>
           <Image
-            source={require("../assets/ramen.png")}
             style={{ height: 125, width: 125 }}
+            source={require("../assets/ramen.png")}
           />
-        </View>
-
-        <View style={styles.cardContent}>
-          <Text variant="titleLarge">Menya Musashi</Text>
-          <Text variant="bodyMedium">Shoyu Ramen</Text>
-          <View style={styles.cardRating}>
-            <Image
-              source={require("../assets/naruto-black.png")}
-              style={{ height: 35, width: 35 }}
-            />
-            <Image
-              source={require("../assets/naruto-black.png")}
-              style={{ height: 35, width: 35 }}
-            />
-            <Image
-              source={require("../assets/naruto-black.png")}
-              style={{ height: 35, width: 35 }}
-            />
-            <Image
-              source={require("../assets/naruto-black.png")}
-              style={{ height: 35, width: 35 }}
-            />
-            <Image
-              source={require("../assets/naruto-black.png")}
-              style={{ height: 35, width: 35 }}
-            />
+          <View style={styles.cardContent}>
+            <Text variant="titleLarge">Menya Musashi</Text>
+            <Text variant="bodyMedium">Tsukemen</Text>
+            <View style={styles.cardRating}>
+              <Image
+                source={require("../assets/naruto-black.png")}
+                style={{ height: 35, width: 35 }}
+              />
+              <Image
+                source={require("../assets/naruto-black.png")}
+                style={{ height: 35, width: 35 }}
+              />
+              <Image
+                source={require("../assets/naruto-black.png")}
+                style={{ height: 35, width: 35 }}
+              />
+              <Image
+                source={require("../assets/naruto-black.png")}
+                style={{ height: 35, width: 35 }}
+              />
+              <Image
+                source={require("../assets/naruto-black.png")}
+                style={{ height: 35, width: 35 }}
+              />
+            </View>
           </View>
         </View>
-      </View>
+      </Snackbar>
 
       {/* End Card Component */}
 
-      <FAB
+      {/* <FAB
         icon="plus"
         style={styles.fab}
         onPress={() => console.log("Pressed")}
-      />
+      /> */}
     </View>
   );
 }
@@ -97,22 +100,19 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: "100%",
   },
-  card: {
-    padding: 10,
-    flex: 1,
+  cardSurface: {
+    display: "flex",
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
-    width: Dimensions.get("window").width,
-    height: "25%",
+    backgroundColor: "white",
+    padding: 0,
     position: "absolute",
     bottom: 0,
-    margin: 75,
-    borderRadius: 5,
+    marginBottom: 75,
   },
-  cardImage: {
+  cardContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   cardContent: {
     display: "flex",
@@ -120,13 +120,13 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   cardRating: {
-    flex: 1,
+    display: "flex",
     flexDirection: "row",
   },
   fab: {
     position: "absolute",
     margin: 16,
-    // right: 0,
+    right: 0,
     bottom: 0,
   },
 });

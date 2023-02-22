@@ -9,6 +9,7 @@ export default function App() {
     <SafeAreaProvider style={styles.statusBar}>
       <Appbar.Header>
         <Appbar.Content title="RamenGoGo" />
+        <Appbar.Action icon="plus" onPress={() => console.log("plus")} />
       </Appbar.Header>
       <MainView />
     </SafeAreaProvider>
